@@ -1,8 +1,7 @@
-[gd_scene format=3 uid="uid://c7mhuk7ula7vv"]
+﻿[gd_scene format=3 uid="uid://c7mhuk7ula7vv"]
 
 [ext_resource type="PackedScene" uid="uid://dok2jxxp58avx" path="res://Map/map.tscn" id="2_7ykc4"]
 [ext_resource type="PackedScene" uid="uid://bgkmxyw21pc1m" path="res://PlayerCharacter/player_character_scene.tscn" id="2_pw63i"]
-[ext_resource type="PackedScene" path="res://GlitchEffect/glitch_effect_scene.tscn" id="3_glitch"]
 [ext_resource type="PackedScene" uid="uid://ck62ulmwnok48" path="res://scenes/scooter.tscn" id="4_pu3yx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pw63i"]
@@ -29,8 +28,6 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33758152, 0.8961288, 1.2531393)
 
 [node name="city2" parent="." unique_id=1355590526 instance=ExtResource("2_7ykc4")]
-
-[node name="GlitchEffect" parent="." unique_id=1831426452 instance=ExtResource("3_glitch")]
 
 [node name="Scooter" parent="." unique_id=962280761 instance=ExtResource("4_pu3yx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6600691, -0.014516354, 12.79459)
