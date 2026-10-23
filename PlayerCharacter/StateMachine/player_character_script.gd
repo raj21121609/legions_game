@@ -91,6 +91,8 @@ func _ready():
 	nb_jumps_in_air_allowed_ref = nb_jumps_in_air_allowed
 	coyote_jump_cooldown_ref = coyote_jump_cooldown
 	
+	add_to_group("player")
+	
 	connect_footstep_audio_effect()
 	
 func _process(delta: float):
