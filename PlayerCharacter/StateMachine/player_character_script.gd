@@ -12,6 +12,9 @@ var last_input_dir : Vector2
 var last_frame_position : Vector3
 var last_frame_velocity : Vector3
 var was_on_floor : bool = false
+var is_vehicle_controlled: bool = false
+var _saved_collision_layer: int = 2
+var _saved_collision_mask: int = 1
 var walk_or_run : String = "WalkState" #keep in memory if play char was walking or running before being in the air
 
 
@@ -84,6 +87,35 @@ var jump_action : StringName
 @onready var movement_dust = %MovementDust
 @onready var jump_particles = preload("../../PlayerCharacter/VFX/jump_particles_scene.tscn")
 @onready var land_particles = preload("../../PlayerCharacter/VFX/land_particles_scene.tscn")
+
+func set_vehicle_controlled(controlled: bool) -> void:
+	if is_vehicle_controlled == controlled:
+		return
+
+	is_vehicle_controlled = controlled
+	if controlled:
+		_saved_collision_layer = collision_layer
+		_saved_collision_mask = collision_mask
+		velocity = Vector3.ZERO
+		move_dir = Vector2.ZERO
+		floor_snap_length = 0.0
+		collision_layer = 0
+		collision_mask = 0
+		collision_shape_3d.set_deferred("disabled", true)
+		state_machine.set_process(false)
+		state_machine.set_physics_process(false)
+		set_physics_process(false)
+		defeated.play_idle()
+		movement_dust.emitting = false
+	else:
+		collision_layer = _saved_collision_layer
+		collision_mask = _saved_collision_mask
+		collision_shape_3d.set_deferred("disabled", false)
+		floor_snap_length = 1.0
+		velocity = Vector3.ZERO
+		state_machine.set_process(true)
+		state_machine.set_physics_process(true)
+		set_physics_process(true)
 
 func _ready():
 	#set move variables, and value references
