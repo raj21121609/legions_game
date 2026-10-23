@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c7uve2i7e7jbs"]
+
+[ext_resource type="Texture2D" uid="uid://dyfrfppctrqel" path="res://Gemini_Generated_Image_3duesd3duesd3due.png" id="1_0fbet"]
+
+[node name="Control" type="Control" unique_id=359792321]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="background" type="TextureRect" parent="." unique_id=1911861811]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.000004
+anchor_bottom = 27.050001
+offset_right = -0.00012207031
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0fbet")
+
+[node name="MenuButtons" type="VBoxContainer" parent="." unique_id=274320106]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="lvl1" type="Button" parent="MenuButtons" unique_id=609455650]
+layout_mode = 2
+text = "dsg"
+
+[node name="lvl2" type="Button" parent="MenuButtons" unique_id=20787212]
+layout_mode = 2
+
+[node name="lvl3" type="Button" parent="MenuButtons" unique_id=874709349]
+layout_mode = 2
+
+[node name="lvl4" type="Button" parent="MenuButtons" unique_id=1800592747]
+layout_mode = 2
