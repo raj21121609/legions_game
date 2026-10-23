@@ -14,6 +14,10 @@ var last_frame_velocity : Vector3
 var was_on_floor : bool = false
 var walk_or_run : String = "WalkState" #keep in memory if play char was walking or running before being in the air
 
+
+#tdhbiu
+@onready var defeated = $VisualRoot/Defeated
+
 @export_group("Walk variables")
 @export var walk_speed : float = 5.0
 @export var walk_accel : float = 8.0
@@ -98,11 +102,18 @@ func _ready():
 func _process(delta: float):
 	modify_model_orientation(delta)
 	
-func _physics_process(_delta : float):
+func _physics_process(_delta: float):
 	modify_physics_properties()
-	
+
+	if move_dir != Vector2.ZERO:
+		print("MOVING: ", move_dir)
+		defeated.play_walk()
+	else:
+		print("IDLE: ", move_dir)
+		defeated.play_idle()
+
 	move_and_slide()
-	
+
 func modify_model_orientation(delta : float):
 	#manage the model rotation depending on the camera mode + char parameters
 	

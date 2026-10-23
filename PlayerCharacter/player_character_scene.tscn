@@ -4,13 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://dmyrflud401tg" path="res://PlayerCharacter/GodotPlush/godot_plush_skin.tscn" id="2_mtsks"]
 [ext_resource type="Script" uid="uid://3h8kirrnujiv" path="res://PlayerCharacter/VFX/particles_manager_script.gd" id="3_v44tt"]
 [ext_resource type="Material" uid="uid://fkuklawrv3wp" path="res://PlayerCharacter/VFX/dust_mat.tres" id="4_j7qt1"]
+[ext_resource type="PackedScene" uid="uid://cbvgdwqswwlmv" path="res://PlayerCharacter/Defeated.fbx" id="5_7ln3a"]
 [ext_resource type="AudioStream" uid="uid://b7q12qmsksbc7" path="res://PlayerCharacter/Sounds/footstep_concrete_000.ogg" id="5_8ixl8"]
+[ext_resource type="Script" uid="uid://dhhhjpbmvm41a" path="res://scripts/defeated.gd" id="6_8yq60"]
+[ext_resource type="Animation" uid="uid://dbekl3dbujmxy" path="res://PlayerCharacter/chicken.anim" id="6_jg5mx"]
 [ext_resource type="AudioStream" uid="uid://c6unhc5lontfn" path="res://PlayerCharacter/Sounds/footstep_concrete_001.ogg" id="6_nlp36"]
+[ext_resource type="Animation" uid="uid://cxplshcqelag6" path="res://PlayerCharacter/dance.anim" id="7_8yq60"]
 [ext_resource type="AudioStream" uid="uid://byg4lkp3ws8kt" path="res://PlayerCharacter/Sounds/footstep_concrete_002.ogg" id="7_4283i"]
+[ext_resource type="Animation" uid="uid://bungf8pmj7vtu" path="res://PlayerCharacter/deaf.anim" id="8_s4fyg"]
 [ext_resource type="AudioStream" uid="uid://bly24bd3apvev" path="res://PlayerCharacter/Sounds/jingles_SAX15.ogg" id="8_s241m"]
 [ext_resource type="PackedScene" uid="uid://c0b71d2b1hdp6" path="res://PlayerCharacter/Camera/camera_holder_scene.tscn" id="9_bnids"]
+[ext_resource type="Animation" uid="uid://b0xganlwh0qe" path="res://PlayerCharacter/walk.anim" id="9_ohfgd"]
 [ext_resource type="Script" uid="uid://sca7ypsol83f" path="res://PlayerCharacter/StateMachine/state_machine_script.gd" id="9_pxnim"]
+[ext_resource type="Animation" uid="uid://2bslo1t7hjxp" path="res://PlayerCharacter/idle.anim" id="10_s4fyg"]
 [ext_resource type="Script" uid="uid://stil4xkf3tk0" path="res://PlayerCharacter/StateMachine/idle_state_script.gd" id="10_wmnke"]
+[ext_resource type="Animation" uid="uid://dh3eenkejc1lv" path="res://PlayerCharacter/real_walk.anim" id="11_s4fyg"]
 [ext_resource type="Script" uid="uid://blt7dest23fk0" path="res://PlayerCharacter/StateMachine/walk_state_script.gd" id="11_v44tt"]
 [ext_resource type="Script" uid="uid://5gk47o641xgt" path="res://PlayerCharacter/StateMachine/run_state_script.gd" id="12_l1d2p"]
 [ext_resource type="Script" uid="uid://dvu58wf01wils" path="res://PlayerCharacter/StateMachine/jump_state_script.gd" id="13_pdxi8"]
@@ -67,6 +75,16 @@ anim_offset_max = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_bw4i7"]
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ql4cm"]
+_data = {
+&"chicken": ExtResource("6_jg5mx"),
+&"dance": ExtResource("7_8yq60"),
+&"deaf": ExtResource("8_s4fyg"),
+&"idle": ExtResource("10_s4fyg"),
+&"real_walk": ExtResource("11_s4fyg"),
+&"walk": ExtResource("9_ohfgd")
+}
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sxclc"]
 random_pitch = 1.2
 streams_count = 3
@@ -106,6 +124,8 @@ unique_name_in_owner = true
 
 [node name="GodotPlushSkin" parent="VisualRoot" unique_id=781060208 instance=ExtResource("2_mtsks")]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7705534, 0, 0)
+visible = false
 
 [node name="ParticlesManager" type="Node3D" parent="VisualRoot" unique_id=1816975858]
 unique_name_in_owner = true
@@ -118,6 +138,67 @@ cast_shadow = 0
 lifetime = 0.8
 process_material = SubResource("ParticleProcessMaterial_dhnoe")
 draw_pass_1 = SubResource("QuadMesh_bw4i7")
+
+[node name="Defeated" parent="VisualRoot" unique_id=920584239 instance=ExtResource("5_7ln3a")]
+script = ExtResource("6_8yq60")
+
+[node name="Skeleton3D" parent="VisualRoot/Defeated" index="0" unique_id=2047428344]
+bones/0/position = Vector3(-0.000763727, 2.0618405, -0.01173707)
+bones/0/rotation = Quaternion(0.017233849, 0.016771179, 0.0016936809, 0.9997095)
+bones/1/rotation = Quaternion(0.0034517252, -0.01165079, 0.0021510732, 0.99992394)
+bones/2/rotation = Quaternion(0.049941365, -0.021915797, 0.004945733, 0.99849945)
+bones/3/rotation = Quaternion(0.10299779, -0.020799156, 0.00088639697, 0.9944638)
+bones/4/rotation = Quaternion(0.07720703, 0.014758951, -0.019711155, 0.99671096)
+bones/5/rotation = Quaternion(-0.030280156, 0.031256784, -0.027338944, 0.99867857)
+bones/9/rotation = Quaternion(-0.5315519, -0.42302173, 0.56224436, -0.4715789)
+bones/10/rotation = Quaternion(0.48188803, 0.20413412, 0.21419212, 0.82476366)
+bones/11/rotation = Quaternion(3.351947e-08, -1.5820905e-08, 0.09637883, 0.9953447)
+bones/12/rotation = Quaternion(0.09135797, 0.02565675, -0.033599284, 0.9949204)
+bones/13/rotation = Quaternion(0.23016268, -0.005331398, -0.038910702, 0.97235936)
+bones/14/rotation = Quaternion(0.10365046, -8.956325e-09, -0.010597568, 0.9945573)
+bones/15/rotation = Quaternion(0.12090124, 9.3643905e-08, -0.012361353, 0.99258757)
+bones/17/rotation = Quaternion(0.1694399, 0.0011429274, 0.18892244, 0.9672627)
+bones/18/rotation = Quaternion(-0.0453504, 0.042145908, -0.09041948, 0.99397755)
+bones/19/rotation = Quaternion(-0.1476054, 0.11589988, 0.054443307, 0.98072207)
+bones/21/rotation = Quaternion(0.1530399, -0.013670803, 0.038848765, 0.9873615)
+bones/22/rotation = Quaternion(0.1313472, -1.584747e-08, -0.0134302685, 0.99124545)
+bones/23/rotation = Quaternion(0.13135445, -2.650894e-08, -0.01343006, 0.9912445)
+bones/25/rotation = Quaternion(0.23600501, -0.00024140073, -0.060908772, 0.9698411)
+bones/26/rotation = Quaternion(0.16779143, 7.752743e-08, -0.017155772, 0.98567325)
+bones/27/rotation = Quaternion(0.1848491, -8.73851e-08, -0.018899456, 0.9825852)
+bones/29/rotation = Quaternion(0.29014432, 0.0009786522, -0.07947932, 0.9536762)
+bones/30/rotation = Quaternion(0.15381318, -1.8023886e-08, -0.01572637, 0.9879749)
+bones/31/rotation = Quaternion(0.15381292, 1.3245639e-08, -0.015726382, 0.9879748)
+bones/33/rotation = Quaternion(0.51687676, -0.4344411, 0.6104429, 0.41407588)
+bones/34/rotation = Quaternion(0.40358818, -0.16246067, -0.30249316, 0.848069)
+bones/35/rotation = Quaternion(1.5683477e-07, 5.6422124e-08, -0.20106734, 0.9795774)
+bones/36/rotation = Quaternion(0.051396806, 0.011465557, -0.008787286, 0.99857384)
+bones/37/rotation = Quaternion(0.19267693, 0.010091907, 0.0009108655, 0.98120993)
+bones/38/rotation = Quaternion(0.303028, 3.4983646e-08, 0.024652803, 0.9526627)
+bones/39/rotation = Quaternion(0.17806156, -4.727267e-09, 0.014486165, 0.9839127)
+bones/41/rotation = Quaternion(0.23935327, -0.04706011, -0.17291553, 0.95425135)
+bones/42/rotation = Quaternion(-0.08363611, -0.00395074, 0.16706647, 0.982384)
+bones/43/rotation = Quaternion(-0.15165448, 0.073735595, -0.044558156, 0.9846719)
+bones/45/rotation = Quaternion(0.1795157, 0.016044192, -0.03844481, 0.98287266)
+bones/46/rotation = Quaternion(0.20563233, -4.0412402e-08, 0.01672924, 0.9784864)
+bones/47/rotation = Quaternion(0.091321304, -5.439748e-09, 0.007429442, 0.99579376)
+bones/49/rotation = Quaternion(0.21093452, 0.007052541, 0.021534372, 0.9772375)
+bones/50/rotation = Quaternion(0.40127596, 7.7838955e-08, 0.032645784, 0.91537523)
+bones/51/rotation = Quaternion(0.20012656, -2.8426863e-08, 0.01628131, 0.9796349)
+bones/53/rotation = Quaternion(0.25306547, 0.009846541, 0.028430525, 0.9669813)
+bones/54/rotation = Quaternion(0.24696048, -2.108433e-06, 0.020083353, 0.96881753)
+bones/55/rotation = Quaternion(0.13810335, -1.11077654e-07, 0.011236058, 0.9903542)
+bones/57/rotation = Quaternion(0.08706858, 0.24657314, 0.9650367, -0.018028656)
+bones/58/rotation = Quaternion(-0.4988821, 0.03496353, -0.018446013, 0.86576784)
+bones/59/rotation = Quaternion(0.4284457, -0.025650697, 0.021033475, 0.9029585)
+bones/60/rotation = Quaternion(0.42499757, -0.013966962, -0.04535951, 0.9039494)
+bones/62/rotation = Quaternion(-0.0619235, 0.114863746, 0.99119526, -0.022446932)
+bones/63/rotation = Quaternion(-0.19516912, -0.02899424, -0.03462759, 0.9797292)
+bones/64/rotation = Quaternion(0.5106172, 0.026807405, -0.03639701, 0.85861915)
+bones/65/rotation = Quaternion(0.39220688, 0.04626519, -0.019890325, 0.91849756)
+
+[node name="AnimationPlayer" parent="VisualRoot/Defeated" index="1" unique_id=693479241]
+libraries/newLib = SubResource("AnimationLibrary_ql4cm")
 
 [node name="AudioRoot" type="Node3D" parent="." unique_id=730464054]
 
@@ -344,3 +425,5 @@ label_settings = ExtResource("17_c1i0s")
 
 [node name="InputManagementComponent" type="Node" parent="." unique_id=333988112]
 script = ExtResource("19_dp0tn")
+
+[editable path="VisualRoot/Defeated"]
