@@ -8,6 +8,8 @@
 ##
 ## Exported variables let you tune everything from the Inspector without
 ## touching code.
+##
+## DEBUG: Press G at runtime to instantly trigger a burst and confirm it works.
 
 class_name GlitchEffect
 
@@ -15,27 +17,29 @@ class_name GlitchEffect
 
 @export_group("Timing")
 ## Minimum seconds between glitch bursts.
-@export_range(5.0, 60.0, 0.5) var interval_min: float = 20.0
+@export_range(1.0, 60.0, 0.5) var interval_min: float = 20.0
 ## Maximum seconds between glitch bursts.
-@export_range(5.0, 120.0, 0.5) var interval_max: float = 40.0
+@export_range(1.0, 120.0, 0.5) var interval_max: float = 40.0
 ## Minimum duration of each glitch burst (seconds).
-@export_range(0.05, 1.0, 0.01) var duration_min: float = 0.10
+@export_range(0.05, 2.0, 0.01) var duration_min: float = 0.15
 ## Maximum duration of each glitch burst (seconds).
-@export_range(0.05, 1.0, 0.01) var duration_max: float = 0.25
+@export_range(0.05, 2.0, 0.01) var duration_max: float = 0.35
 
 @export_group("Intensity")
 ## Peak intensity of the glitch (0 = invisible, 1 = maximum).
-@export_range(0.0, 1.0, 0.05) var peak_intensity: float = 0.55
+@export_range(0.0, 1.0, 0.05) var peak_intensity: float = 0.70
 ## Horizontal band displacement strength.
-@export_range(0.0, 1.0, 0.05) var displacement_strength: float = 0.40
+@export_range(0.0, 1.0, 0.05) var displacement_strength: float = 0.55
 ## RGB channel separation strength.
-@export_range(0.0, 1.0, 0.05) var rgb_split_strength: float = 0.35
+@export_range(0.0, 1.0, 0.05) var rgb_split_strength: float = 0.50
 ## Sparse digital pixel noise density.
-@export_range(0.0, 1.0, 0.05) var noise_density: float = 0.15
+@export_range(0.0, 1.0, 0.05) var noise_density: float = 0.25
 
 @export_group("Control")
 ## Set false at runtime to completely suppress future glitch bursts.
 @export var enabled: bool = true
+## Enable debug key (G) to trigger glitch on demand. Disable in final build.
+@export var debug_key_enabled: bool = true
 
 # ── Private state ─────────────────────────────────────────────────────────────
 var _mat: ShaderMaterial   # reference to the ShaderMaterial on the ColorRect
@@ -65,6 +69,13 @@ func _process(_delta: float) -> void:
 	if _active:
 		_mat.set_shader_parameter("time_seed", fmod(Time.get_ticks_msec() * 0.001, 1000.0))
 
+func _unhandled_input(event: InputEvent) -> void:
+	# Debug trigger: press G to fire a glitch burst on demand.
+	# Useful for verifying the effect is working without waiting 20-40s.
+	if debug_key_enabled and event is InputEventKey:
+		if event.pressed and not event.echo and event.keycode == KEY_G:
+			trigger_glitch()
+
 # ── Glitch burst logic ───────────────────────────────────────────────────────
 
 func _schedule_next() -> void:
@@ -78,7 +89,8 @@ func _on_timer_timeout() -> void:
 		return
 	trigger_glitch()
 
-## Trigger a single glitch burst programmatically (e.g. from another script).
+## Trigger a single glitch burst programmatically (e.g. from another script or debug key).
+## Pass a duration > 0 to override the random range.
 func trigger_glitch(duration: float = -1.0) -> void:
 	if _active:
 		return  # don't stack bursts
@@ -90,7 +102,7 @@ func trigger_glitch(duration: float = -1.0) -> void:
 
 	# Quick fade-in → hold → fade-out using a Tween.
 	var t: Tween = create_tween()
-	var fade_time: float = minf(0.04, burst_duration * 0.25)
+	var fade_time: float = minf(0.05, burst_duration * 0.25)
 	t.tween_method(_set_intensity, 0.0, peak_intensity, fade_time)
 	t.tween_interval(burst_duration - fade_time * 2.0)
 	t.tween_method(_set_intensity, peak_intensity, 0.0, fade_time)
