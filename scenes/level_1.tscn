@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://bi0rk5orgcg6p"]
 
+[ext_resource type="PackedScene" uid="uid://d2gu3xg4bqw2l" path="res://models/level1.glb" id="1_014kd"]
+
 [node name="Level1" type="Node3D" unique_id=428446853]
+
+[node name="level1" parent="." unique_id=1362733180 instance=ExtResource("1_014kd")]

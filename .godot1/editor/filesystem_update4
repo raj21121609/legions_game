@@ -1,0 +1,17 @@
+res://PlayerCharacter/player_character_scene.tscn
+res://PlayerCharacter/VFX/dust_mat.tres
+res://scenes/main_scene.tscn
+res://scenes/scooter.tscn
+res://PlayerCharacter/StateMachine/player_character_script.gd
+res://scenes/scooter_controller.gd
+res://Map/map.tscn
+res://PlayerCharacter/dance.anim
+res://PlayerCharacter/real_walk.anim
+res://PlayerCharacter/walk.anim
+res://PlayerCharacter/idle.anim
+res://PlayerCharacter/deaf.anim
+res://PlayerCharacter/chicken.anim
+res://character.gd
+res://scripts/character.tscn
+res://scripts/defeated.gd
+res://scenes/level_1.tscn

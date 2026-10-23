@@ -1320,8 +1320,8 @@ _data = {
 
 [node name="character" type="RigidBody3D" unique_id=1692071375]
 script = ExtResource("1_18etf")
-camera_distance = 5.0
-camera_height = 3.0
+camera_distance = 6.0
+camera_height = 3.5
 move_speed = 40.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1246963395]

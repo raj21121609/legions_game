@@ -1,0 +1,67 @@
+[gd_scene load_steps=13 format=3 uid="uid://bms828ecx6le0"]
+
+[ext_resource type="PackedScene" uid="uid://dccmmwfh445f5" path="res://scenes/player.tscn" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://disu65hae76mm" path="res://Meshes/test_level.glb" id="2_0wfyh"]
+[ext_resource type="AudioStream" uid="uid://sruo6gfjaxas" path="res://Audio/Music/temple.mp3" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://du0yxcy3k0r3r" path="res://Script/world_sound.gd" id="3_tipki"]
+[ext_resource type="AudioStream" uid="uid://dwt541ks2ufrx" path="res://Audio/Footsteps/wood_footstep_sounds.tres" id="4_85g3d"]
+[ext_resource type="AudioStream" uid="uid://r5of0laimasq" path="res://Audio/Footsteps/stone_footstep_sounds.tres" id="4_choun"]
+[ext_resource type="AudioStream" uid="uid://co0bseompciru" path="res://Audio/Footsteps/sand_footstep_sounds.tres" id="5_choun"]
+[ext_resource type="AudioStream" uid="uid://j6fx4ifm7cpi" path="res://Audio/Footsteps/dirt_footstep_sounds.tres" id="6_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://b2ledg3n3pk3y" path="res://Audio/Footsteps/grass_footstep_sounds.tres" id="7_eb6dy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ln6c0"]
+sky_top_color = Color(0.266022, 0.469832, 0.627174, 1)
+sky_horizon_color = Color(0.476954, 0.560164, 0.707092, 1)
+ground_bottom_color = Color(0.324107, 0.263122, 0.231986, 1)
+ground_horizon_color = Color(0.600839, 0.687082, 0.724187, 1)
+
+[sub_resource type="Sky" id="Sky_jrpxy"]
+sky_material = SubResource("ProceduralSkyMaterial_ln6c0")
+
+[sub_resource type="Environment" id="Environment_espcb"]
+background_mode = 2
+sky = SubResource("Sky_jrpxy")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_espcb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="test_level" parent="." instance=ExtResource("2_0wfyh")]
+
+[node name="StaticBody3D" parent="test_level/level" index="0"]
+script = ExtResource("3_tipki")
+footstep_sound = ExtResource("4_choun")
+
+[node name="StaticBody3D" parent="test_level/wood" index="0"]
+script = ExtResource("3_tipki")
+footstep_sound = ExtResource("4_85g3d")
+
+[node name="StaticBody3D" parent="test_level/snow" index="0"]
+script = ExtResource("3_tipki")
+footstep_sound = ExtResource("5_choun")
+
+[node name="StaticBody3D" parent="test_level/grass" index="0"]
+script = ExtResource("3_tipki")
+footstep_sound = ExtResource("6_ya4ey")
+
+[node name="StaticBody3D" parent="test_level/dirt" index="0"]
+script = ExtResource("3_tipki")
+footstep_sound = ExtResource("7_eb6dy")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sugp2")
+autoplay = true
+bus = &"Music"
+
+[editable path="test_level"]
