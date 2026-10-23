@@ -11,11 +11,15 @@ config_version=5
 [application]
 
 config/name="legions_game"
+run/main_scene="uid://c7mhuk7ula7vv"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
