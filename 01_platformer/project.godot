@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="3D learning"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="uid://dbnh0fwuwtis7"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
