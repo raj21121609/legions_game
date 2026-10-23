@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c7mhuk7ula7vv"]
 
 [ext_resource type="PackedScene" uid="uid://dok2jxxp58avx" path="res://Map/map.tscn" id="2_7ykc4"]
-[ext_resource type="PackedScene" uid="uid://bgkmxyw21pc1m" path="res://PlayerCharacter/player_character_scene.tscn" id="2_pw63i"]
 [ext_resource type="AudioStream" uid="uid://t6g8kys0v8ku" path="res://MUSIC/_bgm.mp3" id="4_gubc5"]
 [ext_resource type="PackedScene" uid="uid://ck62ulmwnok48" path="res://scenes/scooter.tscn" id="4_pu3yx"]
+[ext_resource type="PackedScene" uid="uid://cye2wc8j1lt6h" path="res://scripts/character.tscn" id="4_rt2n2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pw63i"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -26,9 +26,6 @@ environment = SubResource("Environment_pu3yx")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="PlayerCharacter" parent="." unique_id=841616460 instance=ExtResource("2_pw63i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33758152, 0.8961288, 1.2531393)
-
 [node name="city2" parent="." unique_id=1355590526 instance=ExtResource("2_7ykc4")]
 
 [node name="Scooter" parent="." unique_id=962280761 instance=ExtResource("4_pu3yx")]
@@ -38,3 +35,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6600691, -0.014516354, 12.7
 stream = ExtResource("4_gubc5")
 volume_db = -11.748
 autoplay = true
+
+[node name="character" parent="." unique_id=1692071375 instance=ExtResource("4_rt2n2")]
