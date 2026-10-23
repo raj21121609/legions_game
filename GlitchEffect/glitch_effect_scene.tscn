@@ -1,0 +1,25 @@
+﻿[gd_scene format=3 uid="uid://glitcheffect01"]
+
+[ext_resource type="Script" path="res://GlitchEffect/glitch_effect_script.gd" id="1_glitch"]
+[ext_resource type="Shader" path="res://GlitchEffect/glitch_shader.gdshader" id="2_glitch"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_glitch"]
+shader = ExtResource("2_glitch")
+shader_parameter/intensity = 0.0
+shader_parameter/displacement_str = 0.4
+shader_parameter/rgb_split_str = 0.35
+shader_parameter/noise_density = 0.15
+shader_parameter/time_seed = 0.0
+
+[node name="GlitchEffect" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_glitch")
+
+[node name="GlitchRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+material = SubResource("ShaderMaterial_glitch")
+color = Color(1, 1, 1, 1)
