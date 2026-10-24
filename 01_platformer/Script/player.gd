@@ -11,6 +11,10 @@ const RUN_SPEED: float = 3.5
 const BLEND_SPEED: float = 0.2
 var last_lean: float = 0.0
 
+# --- JUMP COUNTER AND WORLDENVIRONMENT TRACKING ---
+var jump_count: int = 0
+@onready var world_env: WorldEnvironment = get_tree().current_scene.find_child("WorldEnvironment", true, false) as WorldEnvironment
+
 @export_group("Health & UI")
 @export var max_health: float = 100.0
 ## Drag your HealthBar (ProgressBar or HSlider) here, or leave empty to auto-detect/auto-create it.
@@ -33,6 +37,12 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		anim_tree.set("parameters/movement/transition_request", "jump")
+		
+		# Increment jump count and signal the WorldEnvironment
+		jump_count += 1
+		if is_instance_valid(world_env):
+			world_env.update_jump_trigger(jump_count)
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
@@ -51,7 +61,8 @@ func _physics_process(delta: float) -> void:
 	
 	var current_speed: float = velocity.length()
 	if not is_on_floor():
-		anim_tree.set("parameters/movement/transition_request", "fall")
+		if velocity.y < 0.0:
+			anim_tree.set("parameters/movement/transition_request", "fall")
 	elif current_speed > RUN_SPEED:
 		anim_tree.set("parameters/movement/transition_request", "run")
 		var lean: float = direction.dot(global_basis.x)
