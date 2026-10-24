@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c8buol6uu5j3p" path="res://level_blocks/Grass_3.gltf" id="5_yk4f3"]
 [ext_resource type="PackedScene" uid="uid://ucq3rew4u7tk" path="res://level_blocks/Grass_2.gltf" id="6_cp0rv"]
 [ext_resource type="Shader" uid="uid://irm3rqi6lk3m" path="res://scenes/shader/level_1.gdshader" id="7_x7blo"]
+[ext_resource type="Shader" uid="uid://bojegjl0lodvn" path="res://scenes/shader/sky.gdshader" id="8_yk4f3"]
+[ext_resource type="Script" uid="uid://deq2pg1mp3aim" path="res://Script/world_environment.gd" id="9_cp0rv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skli7"]
 resource_name = "Green_Light.001"
@@ -1622,6 +1624,26 @@ shader_parameter/rim_color_source = Color(0, 0, 0, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_lp0k0"]
 material = SubResource("ShaderMaterial_r4p81")
 
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2cbcq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rr1tt"]
+resource_local_to_scene = true
+shader = ExtResource("8_yk4f3")
+shader_parameter/sky_noise_texture = SubResource("NoiseTexture2D_2cbcq")
+shader_parameter/scroll_speed = 0.05
+shader_parameter/twist_amount = 3.14000062415
+shader_parameter/cosmic_void_color = Color(0.05, 0, 0.1, 1)
+shader_parameter/energy_bright_color = Color(0.60894036, 0.62944734, 0.60818267, 1)
+shader_parameter/nebula_density = 1.0
+
+[sub_resource type="Sky" id="Sky_isj1j"]
+resource_local_to_scene = true
+sky_material = SubResource("ShaderMaterial_rr1tt")
+
+[sub_resource type="Environment" id="Environment_7ewpb"]
+background_mode = 2
+sky = SubResource("Sky_isj1j")
+
 [node name="Level4" type="Node3D" unique_id=592097292]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=716710780]
@@ -1645,6 +1667,7 @@ shape = SubResource("ConcavePolygonShape3D_6j14n")
 
 [node name="Player" parent="Grass_3_015" unique_id=2087303771 instance=ExtResource("1_huvaw")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.8305826, 10.328499, -0.037475944)
+can_flip_gravity = true
 
 [node name="Cube_Grass_Single_001" type="MeshInstance3D" parent="." unique_id=690099773]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.897289, 1.6218936, -1.0435023)
@@ -2269,3 +2292,7 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_End_010/StaticBody3D" unique_id=1600937243]
 shape = SubResource("ConcavePolygonShape3D_u7ckc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=125176840]
+environment = SubResource("Environment_7ewpb")
+script = ExtResource("9_cp0rv")
