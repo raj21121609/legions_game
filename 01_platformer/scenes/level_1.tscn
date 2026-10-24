@@ -406,7 +406,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_2y5yt")
 
 [node name="Player" parent="." unique_id=2056294200 instance=ExtResource("4_5xbjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8305826, 1.0684928, -0.037475944)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.8305826, 1.0684928, -0.037475944)
 
 [node name="Rock_12" parent="." unique_id=1610921561 instance=ExtResource("5_15mv3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.390167, -15.797148, 5.3491855)
