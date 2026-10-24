@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bms828ecx6le0"]
+[gd_scene format=3 uid="uid://bms828ecx6le0"]
 
 [ext_resource type="PackedScene" uid="uid://dccmmwfh445f5" path="res://scenes/player.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://disu65hae76mm" path="res://Meshes/test_level.glb" id="2_0wfyh"]
@@ -25,41 +25,41 @@ sky = SubResource("Sky_jrpxy")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=581240128]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=826205682]
 environment = SubResource("Environment_espcb")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1534253772]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_0wfyh")]
+[node name="Player" parent="." unique_id=1884789494 instance=ExtResource("1_0wfyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="test_level" parent="." instance=ExtResource("2_0wfyh")]
+[node name="test_level" parent="." unique_id=121967457 instance=ExtResource("2_0wfyh")]
 
-[node name="StaticBody3D" parent="test_level/level" index="0"]
+[node name="StaticBody3D" parent="test_level/level" parent_id_path=PackedInt32Array(121967457, 1415048674) index="0" unique_id=1096690400]
 script = ExtResource("3_tipki")
 footstep_sound = ExtResource("4_choun")
 
-[node name="StaticBody3D" parent="test_level/wood" index="0"]
+[node name="StaticBody3D" parent="test_level/wood" parent_id_path=PackedInt32Array(121967457, 2095164471) index="0" unique_id=1770527919]
 script = ExtResource("3_tipki")
 footstep_sound = ExtResource("4_85g3d")
 
-[node name="StaticBody3D" parent="test_level/snow" index="0"]
+[node name="StaticBody3D" parent="test_level/snow" parent_id_path=PackedInt32Array(121967457, 45765422) index="0" unique_id=1276157642]
 script = ExtResource("3_tipki")
 footstep_sound = ExtResource("5_choun")
 
-[node name="StaticBody3D" parent="test_level/grass" index="0"]
+[node name="StaticBody3D" parent="test_level/grass" parent_id_path=PackedInt32Array(121967457, 473418357) index="0" unique_id=1494495231]
 script = ExtResource("3_tipki")
 footstep_sound = ExtResource("6_ya4ey")
 
-[node name="StaticBody3D" parent="test_level/dirt" index="0"]
+[node name="StaticBody3D" parent="test_level/dirt" parent_id_path=PackedInt32Array(121967457, 1211670188) index="0" unique_id=702757966]
 script = ExtResource("3_tipki")
 footstep_sound = ExtResource("7_eb6dy")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1992388754]
 stream = ExtResource("3_sugp2")
 autoplay = true
 bus = &"Music"
