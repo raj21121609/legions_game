@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bmk7lwdh1we6e" path="res://Meshes/hero_male.glb" id="2_g2els"]
 [ext_resource type="Script" uid="uid://b8xxwnin38jr3" path="res://Script/camera_rig.gd" id="2_qhqgy"]
 [ext_resource type="Script" uid="uid://cv7757d1gj2de" path="res://Script/footstep.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://dfenjiv5v50ph" path="res://Script/health_bar.gd" id="5_qlg0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tixsh"]
 
@@ -72,6 +73,32 @@ nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_ur7pv")
 nodes/walk_speed/position = Vector2(340, 60)
 node_connections = [&"output", 0, &"movement", &"movement", 0, &"Animation", &"movement", 1, &"walk_speed", &"movement", 2, &"run_lean", &"movement", 3, &"Animation 6", &"run_lean", 0, &"Animation 4", &"run_lean", 1, &"Animation 3", &"run_lean", 2, &"Animation 5", &"walk_speed", 0, &"Animation 2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlg0r"]
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(-1.13, -2.35)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuyoq"]
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 1
+
 [node name="Player" type="CharacterBody3D" unique_id=2087303771 groups=["player"]]
 floor_snap_length = 0.2
 script = ExtResource("1_3vyb7")
@@ -95,35 +122,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="mesh/HeroRig_export" parent_id_path=PackedInt32Array(1576731349, 1466245592) index="0" unique_id=2122923995]
-bones/0/position = Vector3(-0.015339083, 1.0949527, 0.0842601)
+bones/0/position = Vector3(-0.016684389, 1.0563201, 0.08151283)
 bones/0/rotation = Quaternion(1, 5.056924e-15, 1.0658141e-14, 6.16095e-08)
-bones/1/rotation = Quaternion(0.76277477, 0.0371358, -0.030729478, 0.6448654)
-bones/2/rotation = Quaternion(-0.68694234, -0.09312704, 0.02726691, 0.72020423)
-bones/3/rotation = Quaternion(0.49895155, -0.0037727293, 0.041840207, 0.8656111)
-bones/4/rotation = Quaternion(0.025799785, -0.0126023665, 0.03560046, 0.99895364)
-bones/5/rotation = Quaternion(-0.96597916, -0.04959981, 0.018180279, 0.25316748)
-bones/6/rotation = Quaternion(0.51150894, 0.0037423149, -0.042889934, 0.8581987)
-bones/7/rotation = Quaternion(-0.095244676, -0.0048815305, -0.003039899, 0.9954373)
-bones/8/rotation = Quaternion(0.9115103, 0.029343128, -0.2812761, -0.29861632)
+bones/1/rotation = Quaternion(0.76120985, 0.045985263, -0.038143534, 0.64574766)
+bones/2/rotation = Quaternion(-0.7233888, -0.10821825, 0.02073876, 0.6815918)
+bones/3/rotation = Quaternion(0.62417984, -0.0034172204, 0.05230718, 0.77952033)
+bones/4/rotation = Quaternion(0.015343732, -0.020827413, 0.0330555, 0.9991187)
+bones/5/rotation = Quaternion(-0.95983917, -0.053417932, 0.010912696, 0.2752021)
+bones/6/rotation = Quaternion(0.4485549, 0.0038844403, -0.03762708, 0.8929544)
+bones/7/rotation = Quaternion(-0.10821605, -0.022336336, 0.012474056, 0.99379826)
+bones/8/rotation = Quaternion(0.9109369, 0.030009627, -0.27572545, -0.30539963)
 bones/9/rotation = Quaternion(-0.06446177, -9.788331e-05, 0.0058366703, 0.9979031)
-bones/10/rotation = Quaternion(-0.847163, 0.21464546, 0.165858, 0.4568736)
-bones/11/rotation = Quaternion(0.9086665, 0.3550809, -0.17111385, 0.13770558)
-bones/12/rotation = Quaternion(-0.6718165, 0.0052512065, -0.05377589, 0.7387444)
-bones/13/rotation = Quaternion(-0.15756239, -0.2600619, 0.1757917, 0.9362901)
+bones/10/rotation = Quaternion(-0.85772127, 0.20838496, 0.16020228, 0.4418432)
+bones/11/rotation = Quaternion(0.8966916, 0.35640717, -0.20058478, 0.16936299)
+bones/12/rotation = Quaternion(-0.699004, 0.0050676223, -0.05595218, 0.71290755)
+bones/13/rotation = Quaternion(-0.16782282, -0.27497238, 0.19335829, 0.92673534)
 bones/14/rotation = Quaternion(-0.43457532, 0.8950093, -0.07173613, 0.070403956)
 bones/15/rotation = Quaternion(-0.1721431, 0.7210735, 0.19182459, 0.64313537)
 bones/16/rotation = Quaternion(-0.2176696, -0.000106906286, 0.00037531022, 0.9760225)
 bones/17/rotation = Quaternion(-0.1807904, -1.1227328e-06, -2.850766e-07, 0.98352164)
-bones/18/rotation = Quaternion(-3.547268e-07, -0.15034382, -2.097063e-06, 0.9886339)
+bones/18/rotation = Quaternion(-3.5919254e-07, -0.1576852, -2.0910472e-06, 0.98748946)
 bones/19/rotation = Quaternion(0.7206885, -0.6926366, -0.013503368, -0.026083518)
-bones/20/rotation = Quaternion(0.8805766, -0.39347178, -0.13930546, -0.22440791)
-bones/21/rotation = Quaternion(-0.17948899, -0.006992746, 0.014367223, 0.9836302)
-bones/22/rotation = Quaternion(-0.28867716, 0.18011233, 0.011426212, 0.940263)
+bones/20/rotation = Quaternion(0.88144547, -0.40855458, -0.12998432, -0.19809347)
+bones/21/rotation = Quaternion(-0.09518227, -0.007076309, 0.0076188864, 0.9954056)
+bones/22/rotation = Quaternion(-0.30815542, 0.17529684, 0.008657359, 0.9350061)
 bones/24/rotation = Quaternion(0.43457523, 0.8950094, -0.07173598, -0.0704038)
 bones/25/rotation = Quaternion(-0.17214316, -0.7210734, -0.19182463, 0.6431355)
 bones/26/rotation = Quaternion(-0.21766958, 0.00010679859, -0.00037532687, 0.9760224)
 bones/27/rotation = Quaternion(-0.18079041, 1.1899456e-06, 3.9561738e-07, 0.98352164)
-bones/28/rotation = Quaternion(-3.1056078e-07, 0.10725193, 2.1723915e-06, 0.9942319)
+bones/28/rotation = Quaternion(-2.987846e-07, 0.10049908, 2.156179e-06, 0.9949372)
 bones/29/rotation = Quaternion(0.9997115, 0.00291794, -6.965804e-05, 0.02384208)
 bones/29/scale = Vector3(1.0000002, 0.9999999, 1.0000014)
 
@@ -147,8 +174,16 @@ script = ExtResource("4_dqkch")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=389344]
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1855974700]
-offset_right = 158.0
-offset_bottom = 55.0
+offset_left = 44.0
+offset_top = 997.0
+offset_right = 484.0
+offset_bottom = 1046.0
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_qlg0r")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tuyoq")
 value = 100.0
+script = ExtResource("5_qlg0r")
 
 [editable path="mesh"]

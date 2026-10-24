@@ -17,6 +17,10 @@
 [ext_resource type="Shader" uid="uid://bojegjl0lodvn" path="res://scenes/shader/sky.gdshader" id="14_guvtl"]
 [ext_resource type="Script" uid="uid://deq2pg1mp3aim" path="res://Script/world_environment.gd" id="15_igmy8"]
 [ext_resource type="Shader" uid="uid://irm3rqi6lk3m" path="res://scenes/shader/level_1.gdshader" id="16_igmy8"]
+[ext_resource type="Script" uid="uid://b1hj68mnasq8e" path="res://Script/portal.gd" id="18_7qsfm"]
+[ext_resource type="Script" uid="uid://6hw5rjgy6e3k" path="res://Script/killzone.gd" id="19_bv48q"]
+[ext_resource type="PackedScene" uid="uid://cbwd7tjcekuub" path="res://bee.tscn" id="20_k6a82"]
+[ext_resource type="PackedScene" uid="uid://chp8g6fx1w3fw" path="res://jump_monster.tscn" id="21_1sb0y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skli7"]
 resource_name = "Green_Light.001"
@@ -1140,6 +1144,12 @@ shader_parameter/rim_color_source = Color(0, 0, 0, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_0na3t"]
 material = SubResource("ShaderMaterial_srjk8")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bv48q"]
+height = 2.5099487
+radius = 0.52441406
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_k22d5"]
+
 [node name="level2" type="Node3D" unique_id=743366529]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=897822085]
@@ -1162,7 +1172,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.8
 [node name="Cube_Grass_Single_0012" parent="." unique_id=1942758166 instance=ExtResource("2_b4j7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.126978, 0, 3.661313)
 
-[node name="Cube_Grass_Single_001" parent="Cube_Grass_Single_0012" index="0" unique_id=481860536]
+[node name="Cube_Grass_Single_001" parent="Cube_Grass_Single_0012" index="0" unique_id=591204017]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.474743, 1.6218936, -4.6541953)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_Grass_Single_0012/Cube_Grass_Single_001" index="0" unique_id=273399528]
@@ -1223,7 +1233,7 @@ shape = SubResource("ConcavePolygonShape3D_guvtl")
 [node name="Cube_Dirt_Side_Tall22" parent="." unique_id=1537256056 instance=ExtResource("3_wo48x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6255, 0, -5.978343)
 
-[node name="Cube_Dirt_Side_Tall2" parent="Cube_Dirt_Side_Tall22" index="0" unique_id=297590438]
+[node name="Cube_Dirt_Side_Tall2" parent="Cube_Dirt_Side_Tall22" index="0" unique_id=526010104]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.732807, -0.36922598, 6.142582)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_Dirt_Side_Tall22/Cube_Dirt_Side_Tall2" index="0" unique_id=410354825]
@@ -1234,7 +1244,7 @@ shape = SubResource("ConcavePolygonShape3D_igmy8")
 [node name="Cube_Grass_CornerBottom_Tall_0212" parent="." unique_id=1094582922 instance=ExtResource("4_y0kc7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.50376, 0, 9.364142)
 
-[node name="Cube_Grass_CornerBottom_Tall_021" parent="Cube_Grass_CornerBottom_Tall_0212" index="0" unique_id=1589151252]
+[node name="Cube_Grass_CornerBottom_Tall_021" parent="Cube_Grass_CornerBottom_Tall_0212" index="0" unique_id=1736870303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.414196, -4.3230534, -11.369497)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_Grass_CornerBottom_Tall_0212/Cube_Grass_CornerBottom_Tall_021" index="0" unique_id=91862532]
@@ -1265,7 +1275,7 @@ shape = SubResource("ConcavePolygonShape3D_wdtqu")
 [node name="Rock_1_0012" parent="Cube_Grass_CornerBottom_Tall_0212" unique_id=96004532 instance=ExtResource("5_y0kc7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6927147, -1.3117902, -14.636688)
 
-[node name="Rock_1_001" parent="Cube_Grass_CornerBottom_Tall_0212/Rock_1_0012" index="0" unique_id=38820151]
+[node name="Rock_1_001" parent="Cube_Grass_CornerBottom_Tall_0212/Rock_1_0012" index="0" unique_id=1657759283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9812088, 0, 3.5533903)
 
 [node name="Rock_1_002" type="MeshInstance3D" parent="Cube_Grass_CornerBottom_Tall_0212/Rock_1_0012" unique_id=1856030511]
@@ -1296,7 +1306,7 @@ skeleton = NodePath("")
 [node name="Cube_Grass_CornerBottom_Tall22" parent="Cube_Grass_CornerBottom_Tall_0212/Rock_1_0012" unique_id=1587831903 instance=ExtResource("6_ne2mo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8093, 1.3117902, 10.358559)
 
-[node name="Cube_Grass_CornerBottom_Tall2" parent="Cube_Grass_CornerBottom_Tall_0212/Rock_1_0012/Cube_Grass_CornerBottom_Tall22" index="0" unique_id=1389099990]
+[node name="Cube_Grass_CornerBottom_Tall2" parent="Cube_Grass_CornerBottom_Tall_0212/Rock_1_0012/Cube_Grass_CornerBottom_Tall22" index="0" unique_id=450083178]
 transform = Transform3D(-1.0053619e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.0053619e-07, 14.822746, -11.113931, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_Grass_CornerBottom_Tall_0212/Rock_1_0012/Cube_Grass_CornerBottom_Tall22/Cube_Grass_CornerBottom_Tall2" index="0" unique_id=810542709]
@@ -1307,7 +1317,7 @@ shape = SubResource("ConcavePolygonShape3D_7qsfm")
 [node name="Fince_Middle2" parent="." unique_id=421490393 instance=ExtResource("5_wo48x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.125973, -1.1998277, 3.3531542)
 
-[node name="Fince_Middle" parent="Fince_Middle2" index="0" unique_id=1933394208]
+[node name="Fince_Middle" parent="Fince_Middle2" index="0" unique_id=50696336]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5241394, -0.17827141, 1.3238316)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Fince_Middle2/Fince_Middle" index="0" unique_id=842698010]
@@ -1368,7 +1378,7 @@ shape = SubResource("ConcavePolygonShape3D_bgibu")
 [node name="Fince_Middle_0012" parent="." unique_id=850257680 instance=ExtResource("6_y0kc7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.278595, 0.38253844, 4.0632205)
 
-[node name="Fince_Middle_001" parent="Fince_Middle_0012" index="0" unique_id=1843567994]
+[node name="Fince_Middle_001" parent="Fince_Middle_0012" index="0" unique_id=1886347408]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4675026, -1.7824377, 0.63684464)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Fince_Middle_0012/Fince_Middle_001" index="0" unique_id=502648919]
@@ -1529,6 +1539,15 @@ shape = SubResource("ConcavePolygonShape3D_vwjju")
 transform = Transform3D(2.842633, -1.2571456e-07, -4.371144e-08, 1.2425545e-07, -1.2571459e-07, 1, -1.2425542e-07, -2.8760142, -4.3711385e-08, 0, 1.251751, 0)
 mesh = SubResource("QuadMesh_0na3t")
 
+[node name="Area3D" type="Area3D" parent="Pipe_End_003/MeshInstance3D" unique_id=1147693437]
+transform = Transform3D(1, 1.3526907e-23, 1.7763568e-15, 8.4703295e-22, 1, 7.1054274e-15, 1.4210855e-14, -5.684342e-14, 1, -1.7881393e-07, 0, -12.192035)
+script = ExtResource("18_7qsfm")
+next_scene_path = "uid://ma6oe33rbj6m"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_End_003/MeshInstance3D/Area3D" unique_id=844272074]
+transform = Transform3D(1, 1.5377113e-08, -1.5377097e-08, -1.5377113e-08, -4.3711267e-08, -1, -1.5377104e-08, 1, -4.3709488e-08, -1.1920929e-07, -0.014940262, -1.3532772)
+shape = SubResource("CylinderShape3D_bv48q")
+
 [node name="Pipe_End_004" type="MeshInstance3D" parent="." unique_id=795621803]
 transform = Transform3D(-1.3113416e-07, 1.3113416e-07, -3, 0, 3, 1.3113416e-07, 3, 5.7320558e-15, -1.3113416e-07, 168.19914, -39.469986, 2.221077)
 mesh = SubResource("ArrayMesh_63d2t")
@@ -1601,6 +1620,40 @@ shape = SubResource("ConcavePolygonShape3D_vwjju")
 
 [node name="Node3D" parent="." unique_id=433426430 instance=ExtResource("14_fldb1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47346234, -0.7917993)
+
+[node name="Killzone" type="Area3D" parent="." unique_id=1243572135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -120.39984, 0)
+script = ExtResource("19_bv48q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone" unique_id=1912929868]
+shape = SubResource("WorldBoundaryShape3D_k22d5")
+
+[node name="Node3D2" parent="." unique_id=1581553944 instance=ExtResource("20_k6a82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.738842, 3.3797057, 0.47593784)
+
+[node name="Node3D3" parent="." unique_id=236923969 instance=ExtResource("20_k6a82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.500557, 3.07528, -2.4933424)
+
+[node name="Node3D4" parent="." unique_id=41522125 instance=ExtResource("21_1sb0y")]
+transform = Transform3D(-0.927184, 0, 0.3746063, 0, 1, 0, -0.3746063, 0, -0.927184, 45.938305, -1.1947503, 0.47970295)
+
+[node name="Node3D5" parent="." unique_id=1582437145 instance=ExtResource("20_k6a82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.99921, -5.886496, 0.763464)
+
+[node name="Node3D6" parent="." unique_id=131099329 instance=ExtResource("20_k6a82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.280025, -6.3852015, 1.215558)
+
+[node name="Node3D7" parent="." unique_id=490034639 instance=ExtResource("21_1sb0y")]
+transform = Transform3D(-0.927184, 0, 0.3746063, 0, 1, 0, -0.3746063, 0, -0.927184, 71.009705, -6.6203423, 1.4201837)
+
+[node name="Node3D8" parent="." unique_id=254798072 instance=ExtResource("20_k6a82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.02127, -8.506357, -0.20107174)
+
+[node name="Node3D9" parent="." unique_id=630097996 instance=ExtResource("20_k6a82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.80815, -8.506358, -1.7469292)
+
+[node name="Node3D10" parent="." unique_id=355786283 instance=ExtResource("20_k6a82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.43553, -8.506357, 2.768462)
 
 [editable path="Cube_Grass_Single_0012"]
 [editable path="Cube_Dirt_Side_Tall22"]

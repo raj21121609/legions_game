@@ -11,6 +11,12 @@ const RUN_SPEED: float = 3.5
 const BLEND_SPEED: float = 0.2
 var last_lean: float = 0.0
 
+# --- GRAVITY FLIP MECHANIC ---
+@export_group("Special Abilities")
+## Turn this on inside Level 4's inspector configuration for the player!
+@export var can_flip_gravity: bool = false
+var gravity_multiplier: float = 1.0
+
 # --- JUMP COUNTER AND WORLDENVIRONMENT TRACKING ---
 var jump_count: int = 0
 @onready var world_env: WorldEnvironment = get_tree().current_scene.find_child("WorldEnvironment", true, false) as WorldEnvironment
@@ -30,13 +36,20 @@ func _ready() -> void:
 	_setup_health_ui()
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	# 1. Handle Gravity Flip input (lifts up or falls back down without rotating anything)
+	if can_flip_gravity and Input.is_action_just_pressed("flip_gravity"):
+		gravity_multiplier *= -1.0
+		
+		# Invert Godot's built-in floor processing detection so ceiling handles stickiness properly
+		up_direction = Vector3.UP * gravity_multiplier
 
-	# Handle jump.
+	# Add the gravity (multiplied by direction state).
+	if not is_on_floor():
+		velocity += get_gravity() * gravity_multiplier * delta
+
+	# Handle jump (Supports inverted vertical controls automatically).
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY * gravity_multiplier
 		anim_tree.set("parameters/movement/transition_request", "jump")
 		
 		# Increment jump count and signal the WorldEnvironment
@@ -44,7 +57,7 @@ func _physics_process(delta: float) -> void:
 		if is_instance_valid(world_env):
 			world_env.update_jump_trigger(jump_count)
 
-	# Get the input direction and handle the movement/deceleration.
+	# Get the input direction and handle movement relative to the camera
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction: Vector3 = (camera.global_basis * Vector3(input_dir.x, 0.0, input_dir.y))
 	direction = Vector3(direction.x, 0.0, direction.z).normalized() * input_dir.length()
@@ -60,8 +73,12 @@ func _physics_process(delta: float) -> void:
 	turn_to(direction)
 	
 	var current_speed: float = velocity.length()
+	
+	# Handle checking ceiling/floor animations dependent on gravity inversion status
+	var falling: bool = (velocity.y < 0.0 if gravity_multiplier > 0 else velocity.y > 0.0)
+	
 	if not is_on_floor():
-		if velocity.y < 0.0:
+		if falling:
 			anim_tree.set("parameters/movement/transition_request", "fall")
 	elif current_speed > RUN_SPEED:
 		anim_tree.set("parameters/movement/transition_request", "run")
