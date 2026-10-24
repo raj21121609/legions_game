@@ -1511,9 +1511,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160.32047, -15.999199, 8.9676
 [node name="Grass_22" parent="." unique_id=105562143 instance=ExtResource("13_wdtqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.20743, -16.034897, 9.127959)
 
-[node name="Node3D" parent="." unique_id=433426430 instance=ExtResource("14_fldb1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141, -16, -3)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1236615130]
 environment = SubResource("Environment_7qsfm")
 script = ExtResource("15_igmy8")
@@ -1601,6 +1598,9 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_End_010/StaticBody3D" unique_id=1196271932]
 shape = SubResource("ConcavePolygonShape3D_vwjju")
+
+[node name="Node3D" parent="." unique_id=433426430 instance=ExtResource("14_fldb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47346234, -0.7917993)
 
 [editable path="Cube_Grass_Single_0012"]
 [editable path="Cube_Dirt_Side_Tall22"]

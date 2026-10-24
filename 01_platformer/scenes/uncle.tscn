@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bh83mn70qjy5j" path="res://npc/Breathing Idle_0.png" id="1_qqc4m"]
 [ext_resource type="Texture2D" uid="uid://cx44fhmy0abll" path="res://npc/Breathing Idle_2.png" id="2_mltdk"]
 [ext_resource type="Animation" uid="uid://c6nc68n7n0tvd" path="res://uncle.anim" id="3_q1jtf"]
+[ext_resource type="Script" uid="uid://cdul00v1rde1o" path="res://Script/dialogue_trigger.gd" id="4_q1jtf"]
+[ext_resource type="PackedScene" uid="uid://735jrnbssjhg" path="res://scenes/DialogueUI.tscn" id="5_fy1mv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5stp1"]
 resource_name = "Clothes_MAT"
@@ -871,6 +873,8 @@ _data = {
 &"uncle": ExtResource("3_q1jtf")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_qqc4m"]
+
 [node name="Node3D" type="Node3D" unique_id=492523565]
 
 [node name="Breathing Idle" type="Node3D" parent="." unique_id=1205945050]
@@ -1403,3 +1407,11 @@ skin = SubResource("Skin_6v1cp")
 libraries/ = SubResource("AnimationLibrary_61ku5")
 libraries/newLib = SubResource("AnimationLibrary_fy1mv")
 autoplay = &"newLib/uncle"
+
+[node name="DialogueTrigger" type="Area3D" parent="." unique_id=149620800]
+script = ExtResource("4_q1jtf")
+dialogue_ui_scene = ExtResource("5_fy1mv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueTrigger" unique_id=1032935953]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("SphereShape3D_qqc4m")

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://735jrnbssjhg"]
+
+[ext_resource type="Script" uid="uid://c4fovneuw6yjx" path="res://Script/dialogue_ui.gd" id="1_0qyo7"]
+
+[node name="DialogueUI" type="CanvasLayer" unique_id=361362897]
+script = ExtResource("1_0qyo7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1633505417]
+
+[node name="Panel" type="Panel" parent="." unique_id=1465945632]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_vertical = 10
+
+[node name="DialogueText" type="Label" parent="Panel" unique_id=1596046126]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
