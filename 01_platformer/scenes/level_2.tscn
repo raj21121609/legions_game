@@ -1134,7 +1134,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_6cvei")
 
 [node name="Player" parent="Grass_3_015" unique_id=1540770357 instance=ExtResource("1_eqxsl")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.8305826, 6.8764853, -0.037475944)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.8305826, 10.328499, -0.037475944)
 
 [node name="Cube_Grass_Single_0012" parent="." unique_id=1942758166 instance=ExtResource("2_b4j7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.126978, 0, 3.661313)
