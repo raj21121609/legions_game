@@ -1,0 +1,6 @@
+
+extends AudioStreamPlayer
+
+func _ready() -> void:
+	volume_db = -12.0
+	play()

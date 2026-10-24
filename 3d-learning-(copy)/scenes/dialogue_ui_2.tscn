@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://n2eg2eiy74m3"]
+
+[sub_resource type="GDScript" id="GDScript_aeiwg"]
+script/source = "
+extends CanvasLayer
+
+@onready var dialogue_text: Label = $Panel/DialogueText
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+
+var dialogue_lines: Array[Dictionary] = [
+	{
+		\"text\": \"Pahuch Gaye Kaam Pura\",
+		\"audio\": \"res://audi/l31.ogg\"
+	}
+]
+
+var current_line := 0
+var is_playing_dialogue := false
+
+
+func _ready() -> void:
+	hide()
+	audio_player.finished.connect(_on_audio_finished)
+
+
+func start_dialogue() -> void:
+	if is_playing_dialogue:
+		return
+
+	is_playing_dialogue = true
+	current_line = 0
+	show_line()
+
+
+func show_line() -> void:
+	if current_line >= dialogue_lines.size():
+		end_dialogue()
+		return
+
+	var line: Dictionary = dialogue_lines[current_line]
+	dialogue_text.text = line[\"text\"]
+
+	var audio_path: String = line[\"audio\"]
+	var audio_file: AudioStream = load(audio_path) as AudioStream
+
+	if audio_file == null:
+		push_error(\"Could not load dialogue audio: \" + audio_path)
+		current_line += 1
+		show_line()
+		return
+
+	audio_player.stream = audio_file
+	audio_player.play()
+
+
+func _on_audio_finished() -> void:
+	current_line += 1
+	show_line()
+
+
+func end_dialogue() -> void:
+	audio_player.stop()
+	hide()
+	is_playing_dialogue = false
+"
+
+[node name="DialogueUI2" type="CanvasLayer" unique_id=1205460838]
+script = SubResource("GDScript_aeiwg")
+
+[node name="Panel" type="Panel" parent="." unique_id=1879716094]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_vertical = 10
+
+[node name="DialogueText2" type="Label" parent="Panel" unique_id=1817312444]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=826547579]

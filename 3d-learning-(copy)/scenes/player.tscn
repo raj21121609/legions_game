@@ -1,0 +1,214 @@
+[gd_scene format=3 uid="uid://dccmmwfh445f5"]
+
+[ext_resource type="Script" uid="uid://bxndm6ngxmdcw" path="res://Script/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://bmk7lwdh1we6e" path="res://Meshes/hero_male.glb" id="2_g2els"]
+[ext_resource type="Script" uid="uid://b8xxwnin38jr3" path="res://Script/camera_rig.gd" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://cv7757d1gj2de" path="res://Script/footstep.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://dfenjiv5v50ph" path="res://Script/health_bar.gd" id="5_qlg0r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tixsh"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qhqgy"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qhqgy"]
+animation = &"freehand_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dqkch"]
+animation = &"freehand_run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tuyoq"]
+animation = &"pose_lean_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fjrip"]
+animation = &"pose_lean_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_smehm"]
+animation = &"freehand_fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qlg0r"]
+animation = &"freehand_idle"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_tuyoq"]
+xfade_time = 0.2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "walk"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "run"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+input_3/name = "fall"
+input_3/auto_advance = false
+input_3/break_loop_at_end = false
+input_3/reset = true
+
+[sub_resource type="AnimationNodeAdd3" id="AnimationNodeAdd3_smehm"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ur7pv"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fjrip"]
+nodes/output/position = Vector2(1380, 100)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_qlg0r")
+nodes/Animation/position = Vector2(180, -240)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_qhqgy")
+"nodes/Animation 2/position" = Vector2(0, -40)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_dqkch")
+"nodes/Animation 3/position" = Vector2(-160, 360)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_tuyoq")
+"nodes/Animation 4/position" = Vector2(20, 200)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_fjrip")
+"nodes/Animation 5/position" = Vector2(-80, 660)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_smehm")
+"nodes/Animation 6/position" = Vector2(620, 840)
+nodes/movement/node = SubResource("AnimationNodeTransition_tuyoq")
+nodes/movement/position = Vector2(960, 200)
+nodes/run_lean/node = SubResource("AnimationNodeAdd3_smehm")
+nodes/run_lean/position = Vector2(402.863, 629.522)
+nodes/walk_speed/node = SubResource("AnimationNodeTimeScale_ur7pv")
+nodes/walk_speed/position = Vector2(340, 60)
+node_connections = [&"output", 0, &"movement", &"movement", 0, &"Animation", &"movement", 1, &"walk_speed", &"movement", 2, &"run_lean", &"movement", 3, &"Animation 6", &"run_lean", 0, &"Animation 4", &"run_lean", 1, &"Animation 3", &"run_lean", 2, &"Animation 5", &"walk_speed", 0, &"Animation 2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlg0r"]
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(-1.13, -2.35)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuyoq"]
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smehm"]
+bg_color = Color(0.28235295, 0.5529412, 0.38431373, 0.3529412)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 22.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjrip"]
+bg_color = Color(0.2819191, 0.28191918, 0.281919, 1)
+
+[node name="Player" type="CharacterBody3D" unique_id=2087303771 groups=["player"]]
+floor_snap_length = 0.2
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=416963253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_tixsh")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=967067817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35604, 0)
+top_level = true
+shape = SubResource("SphereShape3D_qhqgy")
+spring_length = 3.0
+margin = 0.03
+script = ExtResource("2_qhqgy")
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=1839760044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="mesh" parent="." unique_id=1576731349 instance=ExtResource("2_g2els")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="mesh/HeroRig_export" parent_id_path=PackedInt32Array(1576731349, 1466245592) index="0" unique_id=2122923995]
+bones/0/position = Vector3(-0.009035737, 1.1479865, 0.09455168)
+bones/0/rotation = Quaternion(1, 5.056924e-15, 1.0658141e-14, 6.16095e-08)
+bones/1/rotation = Quaternion(0.7631102, 0.019828508, -0.01633987, 0.64575756)
+bones/2/rotation = Quaternion(-0.61484736, -0.06290225, 0.033955224, 0.78540003)
+bones/3/rotation = Quaternion(0.23977472, -0.0041943234, 0.020169133, 0.97061)
+bones/4/rotation = Quaternion(-0.083464175, -0.00081836106, 0.046283398, 0.99543506)
+bones/5/rotation = Quaternion(-0.9763492, -0.019805769, 0.015469613, 0.21473426)
+bones/6/rotation = Quaternion(0.69872653, 0.0031399229, -0.05853634, 0.7129831)
+bones/7/rotation = Quaternion(-0.074324094, 0.017521512, -0.019924175, 0.9968811)
+bones/8/rotation = Quaternion(0.9336726, 0.020101123, -0.22821064, -0.27526605)
+bones/9/rotation = Quaternion(-0.06446177, -9.788331e-05, 0.0058366703, 0.9979031)
+bones/10/rotation = Quaternion(-0.8281554, 0.17795978, 0.13752809, 0.5133956)
+bones/11/rotation = Quaternion(0.93657047, 0.3404854, -0.07817347, 0.028186006)
+bones/12/rotation = Quaternion(-0.56917566, 0.005835509, -0.045559835, 0.82093203)
+bones/13/rotation = Quaternion(-0.12906547, -0.22081512, 0.1542013, 0.9543609)
+bones/14/rotation = Quaternion(-0.43457532, 0.8950093, -0.07173613, 0.070403956)
+bones/15/rotation = Quaternion(-0.1721431, 0.7210735, 0.19182459, 0.64313537)
+bones/16/rotation = Quaternion(-0.2176696, -0.000106906286, 0.00037531022, 0.9760225)
+bones/17/rotation = Quaternion(-0.1807904, -1.1227328e-06, -2.850766e-07, 0.98352164)
+bones/18/rotation = Quaternion(-2.9966162e-07, -0.12327715, -2.1107292e-06, 0.9923723)
+bones/19/rotation = Quaternion(0.7206885, -0.6926366, -0.013503368, -0.026083518)
+bones/20/rotation = Quaternion(0.8931413, -0.35928708, -0.15082529, -0.22464001)
+bones/21/rotation = Quaternion(-0.26485994, -0.0068537495, 0.02120076, 0.9640295)
+bones/22/rotation = Quaternion(-0.27503687, 0.20044035, 0.018063365, 0.9401341)
+bones/24/rotation = Quaternion(0.43457523, 0.8950094, -0.07173598, -0.0704038)
+bones/25/rotation = Quaternion(-0.17214316, -0.7210734, -0.19182463, 0.6431355)
+bones/26/rotation = Quaternion(-0.21766958, 0.00010679859, -0.00037532687, 0.9760224)
+bones/27/rotation = Quaternion(-0.18079041, 1.1899456e-06, 3.9561738e-07, 0.98352164)
+bones/28/rotation = Quaternion(-3.6575733e-07, 0.12947708, 2.1825642e-06, 0.9915824)
+bones/29/rotation = Quaternion(0.9997115, 0.00291794, -6.965804e-05, 0.02384208)
+bones/29/scale = Vector3(1.0000002, 0.9999999, 1.0000014)
+
+[node name="AnimationPlayer" parent="mesh" index="1" unique_id=751126876]
+autoplay = &"freehand_idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=687854277]
+root_node = NodePath("../mesh")
+tree_root = SubResource("AnimationNodeBlendTree_fjrip")
+anim_player = NodePath("../mesh/AnimationPlayer")
+parameters/movement/current_state = "run"
+parameters/movement/transition_request = ""
+parameters/movement/current_index = 2
+parameters/run_lean/add_amount = 0.033172
+parameters/walk_speed/scale = 0.033172
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="." unique_id=1834361877]
+bus = &"SoundFX"
+script = ExtResource("4_dqkch")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=389344]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1855974700]
+offset_left = 44.0
+offset_top = 997.0
+offset_right = 484.0
+offset_bottom = 1046.0
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/background = SubResource("StyleBoxFlat_qlg0r")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tuyoq")
+value = 100.0
+script = ExtResource("5_qlg0r")
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=1280046022]
+offset_left = 131.0
+offset_top = 920.0
+offset_right = 383.0
+offset_bottom = 975.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_smehm")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fjrip")
+uppercase = true
+
+[node name="Timer" type="Timer" parent="CanvasLayer" unique_id=220891278]
+autostart = true
+
+[editable path="mesh"]
