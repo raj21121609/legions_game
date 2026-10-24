@@ -28,14 +28,32 @@ var jump_count: int = 0
 
 var current_health: float = 100.0
 
+# --- TIMER CONFIGURATION ---
+@export_group("Level Timer")
+## Total seconds allowed to complete the level before dying
+@export var time_limit: float = 60.0
+var time_left: float = 0.0
+@onready var timer_label: Label = $CanvasLayer/TimerLabel
+
 func _ready() -> void:
 	# Automatically register in the "player" group so Crabs always find you
 	add_to_group("player")
 	
 	current_health = max_health
+	time_left = time_limit
 	_setup_health_ui()
 
 func _physics_process(delta: float) -> void:
+	# --- Update Level Timer ---
+	if time_left > 0.0:
+		time_left = maxf(time_left - delta, 0.0)
+		if is_instance_valid(timer_label):
+			timer_label.text = "Time Left: %d" % ceilf(time_left)
+		
+		if time_left <= 0.0:
+			print("Time's up!")
+			_on_player_death()
+
 	# 1. Handle Gravity Flip input (lifts up or falls back down without rotating anything)
 	if can_flip_gravity and Input.is_action_just_pressed("flip_gravity"):
 		gravity_multiplier *= -1.0
@@ -119,7 +137,7 @@ func heal(amount: float) -> void:
 
 func _on_player_death() -> void:
 	print("Player Died!")
-	# Reloads the current level when health hits 0
+	# Reloads the current level when health hits 0 or time runs out
 	get_tree().reload_current_scene()
 
 func _setup_health_ui() -> void:
@@ -127,32 +145,8 @@ func _setup_health_ui() -> void:
 	if not is_instance_valid(health_slider):
 		health_slider = find_child("HealthBar", true, false) as Range
 		
-	# 2. If you haven't added a HealthBar node yet, create one on screen automatically!
-	if not is_instance_valid(health_slider):
-		var canvas: CanvasLayer = CanvasLayer.new()
-		canvas.name = "AutoHealthUI"
-		add_child(canvas)
-		
-		var bar: ProgressBar = ProgressBar.new()
-		bar.name = "HealthBar"
-		bar.position = Vector2(24.0, 24.0)
-		bar.size = Vector2(260.0, 28.0)
-		bar.show_percentage = true
-		
-		var bg_style: StyleBoxFlat = StyleBoxFlat.new()
-		bg_style.bg_color = Color(0.15, 0.15, 0.15, 0.85)
-		bg_style.set_corner_radius_all(6)
-		
-		var fill_style: StyleBoxFlat = StyleBoxFlat.new()
-		fill_style.bg_color = Color(0.85, 0.2, 0.2, 0.95)
-		fill_style.set_corner_radius_all(6)
-		
-		bar.add_theme_stylebox_override("background", bg_style)
-		bar.add_theme_stylebox_override("fill", fill_style)
-		
-		canvas.add_child(bar)
-		health_slider = bar
-
-	health_slider.min_value = 0.0
-	health_slider.max_value = max_health
-	health_slider.value = current_health
+	# 2. Setup your pre-existing health bar configuration
+	if is_instance_valid(health_slider):
+		health_slider.min_value = 0.0
+		health_slider.max_value = max_health
+		health_slider.value = current_health
