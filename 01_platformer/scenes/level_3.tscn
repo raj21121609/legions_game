@@ -3046,7 +3046,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_ema3p")
 
 [node name="Fince_Middle_010" type="MeshInstance3D" parent="." unique_id=1386803214]
-transform = Transform3D(1.5286748, 1.289633, 0, -1.289633, 1.5286748, 0, 0, 0, 2, 97.38979, -11.466138, 2.5641289)
+transform = Transform3D(1.5286748, 1.289633, 0, -1.289633, 1.5286748, 0, 0, 0, 2, 97.38979, -11.466138, -4.9357553)
 mesh = SubResource("ArrayMesh_uwxec")
 skeleton = NodePath("")
 
