@@ -2,13 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://dccmmwfh445f5" path="res://scenes/player.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://disu65hae76mm" path="res://Meshes/test_level.glb" id="2_0wfyh"]
-[ext_resource type="AudioStream" uid="uid://sruo6gfjaxas" path="res://Audio/Music/temple.mp3" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://du0yxcy3k0r3r" path="res://Script/world_sound.gd" id="3_tipki"]
 [ext_resource type="AudioStream" uid="uid://dwt541ks2ufrx" path="res://Audio/Footsteps/wood_footstep_sounds.tres" id="4_85g3d"]
 [ext_resource type="AudioStream" uid="uid://r5of0laimasq" path="res://Audio/Footsteps/stone_footstep_sounds.tres" id="4_choun"]
 [ext_resource type="AudioStream" uid="uid://co0bseompciru" path="res://Audio/Footsteps/sand_footstep_sounds.tres" id="5_choun"]
 [ext_resource type="AudioStream" uid="uid://j6fx4ifm7cpi" path="res://Audio/Footsteps/dirt_footstep_sounds.tres" id="6_ya4ey"]
 [ext_resource type="AudioStream" uid="uid://b2ledg3n3pk3y" path="res://Audio/Footsteps/grass_footstep_sounds.tres" id="7_eb6dy"]
+[ext_resource type="AudioStream" uid="uid://dldlpy26cgrls" path="res://audi/bg.ogg" id="9_choun"]
+[ext_resource type="Script" uid="uid://d0sckui0fh7m7" path="res://Script/audio_stream_player.gd" id="10_ya4ey"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ln6c0"]
 sky_top_color = Color(0.266022, 0.469832, 0.627174, 1)
@@ -59,9 +60,9 @@ footstep_sound = ExtResource("6_ya4ey")
 script = ExtResource("3_tipki")
 footstep_sound = ExtResource("7_eb6dy")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1992388754]
-stream = ExtResource("3_sugp2")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1575591607]
+stream = ExtResource("9_choun")
 autoplay = true
-bus = &"Music"
+script = ExtResource("10_ya4ey")
 
 [editable path="test_level"]
