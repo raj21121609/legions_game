@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cbwd7tjcekuub"]
 
 [ext_resource type="Animation" uid="uid://cbgub3bk7uxri" path="res://Animations/attack.anim" id="1_sdpr3"]
+[ext_resource type="Script" uid="uid://rqcnl4jytt13" path="res://Script/crab.gd" id="1_sgn7r"]
 [ext_resource type="Animation" uid="uid://d3k5s2du8klvs" path="res://Animations/crab_walk.anim" id="2_sgn7r"]
 [ext_resource type="Animation" uid="uid://by8ss6rfl2vm0" path="res://Animations/death.anim" id="3_y8nj2"]
 [ext_resource type="Animation" uid="uid://demtuy2am6mgi" path="res://Animations/idle.anim" id="4_jalfw"]
@@ -123,6 +124,9 @@ bind/6/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67017317, -0.9473251, 0.6
 bind/7/name = &"neutral_bone"
 bind/7/bone = -1
 bind/7/pose = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 1.2365944, -1.1501819, 0.028666347)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wtuxk"]
+radius = 0.868714
 
 [sub_resource type="Animation" id="Animation_gj03h"]
 resource_name = "Bite_Front"
@@ -4769,59 +4773,60 @@ _data = {
 [node name="Node3D" type="Node3D" unique_id=1581553944]
 
 [node name="crab" type="Node3D" parent="." unique_id=1002316374]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_sgn7r")
 
 [node name="MonsterArmature_001" type="Node3D" parent="crab" unique_id=1075178083]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2365944, -0.028666347, -1.1501819)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="crab/MonsterArmature_001" unique_id=1676736278]
 bones/0/name = "Body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(-4.5401976e-09, -0.13456254, 0.0037401095)
-bones/0/rotation = Quaternion(0.13843977, 1.7936278e-15, 9.902034e-08, 0.99037087)
+bones/0/position = Vector3(0, 0, 0)
+bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Mouth"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10141271, 0.56543535)
 bones/1/enabled = true
-bones/1/position = Vector3(8.7936875e-16, 0.10141274, 0.5654354)
-bones/1/rotation = Quaternion(0, -4.440892e-16, -7.1054274e-15, 1)
+bones/1/position = Vector3(-8.809661e-18, 0.10141271, 0.56543535)
+bones/1/rotation = Quaternion(0, 0, 0, 1)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Head"
 bones/2/parent = -1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53387225, 0)
 bones/2/enabled = true
-bones/2/position = Vector3(5.008585e-06, 0.5338772, 5.008585e-06)
-bones/2/rotation = Quaternion(-0.1063523, 0.0006993448, 0.0013604136, 0.99432737)
+bones/2/position = Vector3(0, 0.5338722, 0)
+bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Head2"
 bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58322525, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 0.58322525, 0)
-bones/3/rotation = Quaternion(1.8626165e-09, 1.7347235e-18, -1.8189894e-12, 1)
+bones/3/rotation = Quaternion(0, 0, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Head3"
 bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44039452, 0)
 bones/4/enabled = true
 bones/4/position = Vector3(0, 0.44039452, 0)
-bones/4/rotation = Quaternion(1.8626165e-09, 1.7347235e-18, -1.8189894e-12, 1)
+bones/4/rotation = Quaternion(0, 0, 0, 1)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Eyebrow.R"
 bones/5/parent = 2
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5664213, 0.44211924, 0.50615966)
 bones/5/enabled = true
-bones/5/position = Vector3(-0.56642133, 0.4421193, 0.5061597)
-bones/5/rotation = Quaternion(1.8626165e-09, 1.7347235e-18, -1.8189894e-12, 1)
+bones/5/position = Vector3(-0.5664213, 0.44211924, 0.50615966)
+bones/5/rotation = Quaternion(0, 0, 0, 1)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Eyebrow.L"
 bones/6/parent = 2
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5664213, 0.44211924, 0.50615966)
 bones/6/enabled = true
-bones/6/position = Vector3(0.5664213, 0.44211918, 0.5061597)
-bones/6/rotation = Quaternion(1.8626165e-09, 1.7347235e-18, -1.8189894e-12, 1)
+bones/6/position = Vector3(0.5664213, 0.44211924, 0.50615966)
+bones/6/rotation = Quaternion(0, 0, 0, 1)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "neutral_bone"
 bones/7/parent = -1
@@ -4834,6 +4839,12 @@ bones/7/scale = Vector3(1, 1, 1)
 [node name="Crab" type="MeshInstance3D" parent="crab/MonsterArmature_001/Skeleton3D" unique_id=2121838507]
 mesh = SubResource("ArrayMesh_5hqxn")
 skin = SubResource("Skin_53ot2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="crab/MonsterArmature_001/Skeleton3D/Crab" unique_id=534950017]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="crab/MonsterArmature_001/Skeleton3D/Crab/StaticBody3D" unique_id=1363280367]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024582982, 0.83903843, 0.14716399)
+shape = SubResource("SphereShape3D_wtuxk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="crab" unique_id=1003226255]
 libraries/ = SubResource("AnimationLibrary_2e3mb")
