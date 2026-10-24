@@ -133,35 +133,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="mesh/HeroRig_export" parent_id_path=PackedInt32Array(1576731349, 1466245592) index="0" unique_id=2122923995]
-bones/0/position = Vector3(-0.009035737, 1.1479865, 0.09455168)
+bones/0/position = Vector3(-0.011787838, 1.037717, 0.09627495)
 bones/0/rotation = Quaternion(1, 5.056924e-15, 1.0658141e-14, 6.16095e-08)
-bones/1/rotation = Quaternion(0.7631102, 0.019828508, -0.01633987, 0.64575756)
-bones/2/rotation = Quaternion(-0.61484736, -0.06290225, 0.033955224, 0.78540003)
-bones/3/rotation = Quaternion(0.23977472, -0.0041943234, 0.020169133, 0.97061)
-bones/4/rotation = Quaternion(-0.083464175, -0.00081836106, 0.046283398, 0.99543506)
-bones/5/rotation = Quaternion(-0.9763492, -0.019805769, 0.015469613, 0.21473426)
-bones/6/rotation = Quaternion(0.69872653, 0.0031399229, -0.05853634, 0.7129831)
-bones/7/rotation = Quaternion(-0.074324094, 0.017521512, -0.019924175, 0.9968811)
-bones/8/rotation = Quaternion(0.9336726, 0.020101123, -0.22821064, -0.27526605)
+bones/1/rotation = Quaternion(0.7571282, 0.06133693, -0.051716376, 0.648321)
+bones/2/rotation = Quaternion(-0.86701787, -0.13559721, -0.0034493918, 0.47945973)
+bones/3/rotation = Quaternion(0.8665417, -0.0022177866, 0.07255109, 0.49379858)
+bones/4/rotation = Quaternion(-0.1327717, -0.025012113, 0.020339228, 0.9906223)
+bones/5/rotation = Quaternion(-0.8724928, 0.02531284, -0.018872164, 0.48760596)
+bones/6/rotation = Quaternion(0.47688854, 0.0038236377, -0.039995834, 0.878045)
+bones/7/rotation = Quaternion(-0.28001878, -0.089108825, 0.05382252, 0.95433336)
+bones/8/rotation = Quaternion(0.93709993, 0.01002531, -0.12516487, -0.3256946)
 bones/9/rotation = Quaternion(-0.06446177, -9.788331e-05, 0.0058366703, 0.9979031)
-bones/10/rotation = Quaternion(-0.8281554, 0.17795978, 0.13752809, 0.5133956)
-bones/11/rotation = Quaternion(0.93657047, 0.3404854, -0.07817347, 0.028186006)
-bones/12/rotation = Quaternion(-0.56917566, 0.005835509, -0.045559835, 0.82093203)
-bones/13/rotation = Quaternion(-0.12906547, -0.22081512, 0.1542013, 0.9543609)
+bones/10/rotation = Quaternion(-0.8814311, 0.09848483, 0.07031753, 0.45654723)
+bones/11/rotation = Quaternion(0.89972645, 0.35651907, -0.21440735, 0.13196996)
+bones/12/rotation = Quaternion(-0.6245725, 0.0055401223, -0.049994037, 0.77934533)
+bones/13/rotation = Quaternion(-0.14688073, -0.2675469, 0.29974696, 0.9038786)
 bones/14/rotation = Quaternion(-0.43457532, 0.8950093, -0.07173613, 0.070403956)
 bones/15/rotation = Quaternion(-0.1721431, 0.7210735, 0.19182459, 0.64313537)
 bones/16/rotation = Quaternion(-0.2176696, -0.000106906286, 0.00037531022, 0.9760225)
 bones/17/rotation = Quaternion(-0.1807904, -1.1227328e-06, -2.850766e-07, 0.98352164)
-bones/18/rotation = Quaternion(-2.9966162e-07, -0.12327715, -2.1107292e-06, 0.9923723)
+bones/18/rotation = Quaternion(-3.170495e-07, -0.13347548, -2.0848427e-06, 0.9910521)
 bones/19/rotation = Quaternion(0.7206885, -0.6926366, -0.013503368, -0.026083518)
-bones/20/rotation = Quaternion(0.8931413, -0.35928708, -0.15082529, -0.22464001)
-bones/21/rotation = Quaternion(-0.26485994, -0.0068537495, 0.02120076, 0.9640295)
-bones/22/rotation = Quaternion(-0.27503687, 0.20044035, 0.018063365, 0.9401341)
+bones/20/rotation = Quaternion(0.8931605, -0.42534572, 0.0041861124, -0.14604077)
+bones/21/rotation = Quaternion(-0.10221457, -0.007071512, 0.008181875, 0.9947036)
+bones/22/rotation = Quaternion(-0.30014685, 0.23515996, -0.019311218, 0.92425036)
 bones/24/rotation = Quaternion(0.43457523, 0.8950094, -0.07173598, -0.0704038)
 bones/25/rotation = Quaternion(-0.17214316, -0.7210734, -0.19182463, 0.6431355)
 bones/26/rotation = Quaternion(-0.21766958, 0.00010679859, -0.00037532687, 0.9760224)
 bones/27/rotation = Quaternion(-0.18079041, 1.1899456e-06, 3.9561738e-07, 0.98352164)
-bones/28/rotation = Quaternion(-3.6575733e-07, 0.12947708, 2.1825642e-06, 0.9915824)
+bones/28/rotation = Quaternion(-3.437484e-07, 0.14751576, 2.103515e-06, 0.9890597)
 bones/29/rotation = Quaternion(0.9997115, 0.00291794, -6.965804e-05, 0.02384208)
 bones/29/scale = Vector3(1.0000002, 0.9999999, 1.0000014)
 
@@ -198,6 +198,7 @@ value = 100.0
 script = ExtResource("5_qlg0r")
 
 [node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=1280046022]
+visible = false
 offset_left = 131.0
 offset_top = 920.0
 offset_right = 383.0
@@ -207,8 +208,5 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_smehm")
 theme_override_styles/focus = SubResource("StyleBoxFlat_fjrip")
 uppercase = true
-
-[node name="Timer" type="Timer" parent="CanvasLayer" unique_id=220891278]
-autostart = true
 
 [editable path="mesh"]

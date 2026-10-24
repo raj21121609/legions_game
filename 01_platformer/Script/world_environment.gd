@@ -19,7 +19,7 @@ func _ready() -> void:
 ## Call this function from your player script whenever the jump counter updates
 func update_jump_trigger(total_jumps: int) -> void:
 	# Check if the jump count is a multiple of 7 and isn't zero
-	if total_jumps > 0 and total_jumps % 3 == 0:
+	if total_jumps > 0 and total_jumps % 1 == 0:
 		# Cycle to the next color in our high-contrast preset list
 		current_color_index = (current_color_index + 1) % CONTRAST_COLORS.size()
 		
